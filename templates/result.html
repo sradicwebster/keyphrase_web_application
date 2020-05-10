@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 4px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>Key Phrases</th>
+      {% for key, value in result.items() %}
+      <tr>
+         <td> {{ value }} </td>
+      </tr>
+      {% endfor %}
+   </tr>
+</table>
+
+<br>
+<br>
+<form action="/" method="get">
+    <button name="restart" type="submit">Upload new document</button>
+</form>
+
+
+</body>
+</html>
