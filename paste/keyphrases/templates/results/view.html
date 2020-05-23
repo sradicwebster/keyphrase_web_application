@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %} {{ kp['title'] }} {% endblock %}</h1>
+    <a class="action" href="{{ url_for('results.index') }}">Return</a>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="body">Key Phrases</label>
+    <textarea name="body" id="body">{{ kp['keyphrases'] }}</textarea>
+  </form>
+    <hr>
+  <form action="{{ url_for('results.delete', id=kp['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+{% endblock %}
