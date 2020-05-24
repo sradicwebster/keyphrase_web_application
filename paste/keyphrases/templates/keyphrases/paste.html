@@ -2,6 +2,7 @@
 
 {% block header %}
   <h1>{% block title %}Enter document title and paste text{% endblock %}</h1>
+    <a class="action" href="{{ url_for('results.index') }}">Uploaded texts</a>
 {% endblock %}
 
 {% block content %}
@@ -9,7 +10,7 @@
     <label for="title">Title</label>
     <input name="title" id="title" required>
     <label for="text">Text</label>
-    <textarea name="text" id="text" required> </textarea>
+    <textarea name="text" id="text"> </textarea>
     <input type="submit" value="Get Key Phrases">
   </form>
 {% endblock %}

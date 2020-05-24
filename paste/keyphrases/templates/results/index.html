@@ -11,6 +11,7 @@
       <header>
         <div>
           <h1>{{ doc['title'] }}</h1>
+          <div class="about"> {{ doc['kp_count'] }} keyphrases </div>
         </div>
           <a class="action" href="{{ url_for('results.view', id=doc['id']) }}">View</a>
       </header>

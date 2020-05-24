@@ -11,7 +11,7 @@ bp = Blueprint('results', __name__)
 def index():
     db = get_db()
     docs = db.execute(
-        'SELECT id, title FROM documents ORDER BY created DESC'
+        'SELECT id, title, kp_count FROM documents ORDER BY created DESC'
         ).fetchall()
     return render_template('results/index.html', docs=docs)
 
@@ -20,6 +20,7 @@ def get_kp(id):
         'SELECT * FROM documents WHERE id = ?', (id,)
         ).fetchone()
     return kp
+
 
 @bp.route('/<int:id>/view', methods=('GET', 'POST'))
 def view(id):

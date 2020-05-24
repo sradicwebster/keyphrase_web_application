@@ -5,5 +5,6 @@ CREATE TABLE documents (
   title TEXT NOT NULL,
   text TEXT NOT NULL,
   keyphrases TEXT NOT NULL,
+  kp_count INTEGER NOT NULL,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
