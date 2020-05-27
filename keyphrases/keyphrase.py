@@ -2,20 +2,23 @@ import functools
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
-from flaskr.db import get_db
-from nlp_model import PublicationKeyPhrase
+from keyphrases.db import get_db
+from .nlp_models import PublicationKeyPhrase
+#from nlp_model import nlp_model
 
-bp = Blueprint('keyphrases', __name__, url_prefix='/keyphrases')
+bp = Blueprint('keyphrase', __name__, url_prefix='/keyphrase')
 
-@bp.route('/paste', methods=('GET', 'POST'))
-def paste():
+@bp.route('/input', methods=('GET', 'POST'))
+def input():
     if request.method == 'POST':
         title = request.form['title']
         text = request.form['text']
 
         db = get_db()
         error = None
-        if not text:
+        if not title:
+            error = 'Title is required.'
+        elif not text:
             error = 'Text is required.'
         elif db.execute(
             'SELECT id FROM documents WHERE title = ?', (title,)
@@ -24,7 +27,8 @@ def paste():
 
         if error is None:
             publication = PublicationKeyPhrase(text)
-            kp_list = publication.get_key_phrases()
+            #publication = nlp_model.PublicationKeyPhrase(text)
+            kp_list = publication.get_key_phrases_hmm()
             number_of_kp = len(kp_list)
             keyphrases = '\n'.join(set(kp_list))
 
@@ -36,4 +40,4 @@ def paste():
 
         flash(error)
 
-    return render_template('keyphrases/paste.html')
+    return render_template('keyphrase/input.html')

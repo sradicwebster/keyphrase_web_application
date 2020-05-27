@@ -1,19 +1,17 @@
 from flair.embeddings import Sentence
 from flair.models import SequenceTagger
-import numpy as np
+from nltk.tokenize import TreebankWordTokenizer as twt
+import dill
 
 class PublicationKeyPhrase:
     def __init__(self, text):
         self.text = text
 
-    def get_key_phrases(self):
+    def get_key_phrases_flair(self):
 
         model = SequenceTagger.load('/Users/hn19405/OneDrive - University of Bristol/Group Project/individual_project/flair_model/final-model.pt')
-
         sentence = Sentence(self.text)
-
         model.predict(sentence)
-
         tagged = sentence.to_tagged_string().split(' ')
 
         kp_words = []
@@ -35,6 +33,34 @@ class PublicationKeyPhrase:
             else:
                 key_phrase.append(' '.join([kp_words[j][0] for j in range(num,len(kp_words))]))
 
-        #np.savetxt('test_ks.txt', key_phrase, fmt='%s')
+        return key_phrase
+
+
+    def get_key_phrases_hmm(self):
+
+        with open('keyphrases/hmm_tagger.dill', 'rb') as f:
+            tagger = dill.load(f)
+
+        tokens = list(twt().tokenize(self.text))
+        tagged_words = tagger.tag(tokens)
+
+        kp_words = []
+        for i, word in enumerate(tagged_words):
+            if word[1] == 'B':
+                kp_words.append(tagged_words[i])
+            elif word[1] == 'I':
+                kp_words.append(tagged_words[i])
+
+        index_b = []
+        for i, word in enumerate(kp_words):
+            if word[1] == 'B':
+                index_b.append(i)
+
+        key_phrase = []
+        for i, num in enumerate(index_b):
+            if i < len(index_b) - 1:
+                key_phrase.append(' '.join([kp_words[j][0] for j in range(num, index_b[i + 1])]))
+            else:
+                key_phrase.append(' '.join([kp_words[j][0] for j in range(num, len(kp_words))]))
 
         return key_phrase

@@ -16,7 +16,7 @@ def create_app(test_config=None):
         app.config.from_pyfile('config.py', silent=True)
     else:
         # load the test config if passed in
-        app.config.from_mapping(test_config)
+        app.config.update(test_config)
 
     # ensure the instance folder exists
     try:
@@ -32,8 +32,8 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
-    from . import keyphrases
-    app.register_blueprint(keyphrases.bp)
+    from . import keyphrase
+    app.register_blueprint(keyphrase.bp)
 
     from . import results
     app.register_blueprint(results.bp)
