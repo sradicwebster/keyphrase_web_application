@@ -4,7 +4,7 @@ University of Bristol Interactive AI CDT first year individual project to constr
 The Python web framework Flask was used to construct an application around an NLP model that was developed to extract key phrases from scientific publications.
 
 # To run on Linux or Mac
-Download: dist/keyphrases-1.0.0-py3-none-any.whl
+Download: keyphrases-1.0.0-py3-none-any.whl
 ```sh
 $ pip install keyphrases-1.0.0-py3-none-any.whl
 $ export FLASK_APP=keyphrases
