@@ -1,4 +1,0 @@
-include keyphrases/schema.sql
-graft keyphrases/static
-graft keyphrases/templates
-global-exclude *.pyc
