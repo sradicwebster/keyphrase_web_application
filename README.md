@@ -6,9 +6,8 @@ The Python web framework Flask was used to construct an application around an NL
 # To run on Linux or Mac
 Create a directory and download:
 
-  keyphrases-1.0.0-py3-none-any.whl
-  
-  hmm_tagger.dill
+  - keyphrases-1.0.0-py3-none-any.whl
+  - hmm_tagger.dill
   
 In the directory create a virtual environment, install using pip and run the flask app as shown below:
 ```sh
