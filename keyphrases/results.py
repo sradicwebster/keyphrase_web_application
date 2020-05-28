@@ -1,7 +1,7 @@
 from flask import (
     Blueprint, redirect, render_template, url_for
 )
-from flaskr.db import get_db
+from keyphrases.db import get_db
 
 
 bp = Blueprint('results', __name__)
