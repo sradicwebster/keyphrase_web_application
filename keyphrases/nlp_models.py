@@ -38,7 +38,7 @@ class PublicationKeyPhrase:
 
     def get_key_phrases_hmm(self):
 
-        with open('keyphrases/hmm_tagger.dill', 'rb') as f:
+        with open('hmm_tagger.dill', 'rb') as f:
             tagger = dill.load(f)
 
         tokens = list(twt().tokenize(self.text))
