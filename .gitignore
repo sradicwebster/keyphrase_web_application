@@ -131,6 +131,6 @@ dmypy.json
 # added
 .DS_Store
 */.DS_Store
-.in
+MANIFEST.in
 setup.py
 keyphrases/setup.cfg
