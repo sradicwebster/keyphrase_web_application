@@ -1,5 +1,5 @@
-from flair.embeddings import Sentence
-from flair.models import SequenceTagger
+#from flair.embeddings import Sentence
+#from flair.models import SequenceTagger
 from nltk.tokenize import TreebankWordTokenizer as twt
 import dill
 
