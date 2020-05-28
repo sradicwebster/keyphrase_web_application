@@ -6,7 +6,7 @@ import dill
 class PublicationKeyPhrase:
     def __init__(self, text):
         self.text = text
-
+    '''
     def get_key_phrases_flair(self):
 
         model = SequenceTagger.load('path to model.pt')
@@ -34,7 +34,7 @@ class PublicationKeyPhrase:
                 key_phrase.append(' '.join([kp_words[j][0] for j in range(num,len(kp_words))]))
 
         return key_phrase
-
+    '''
 
     def get_key_phrases_hmm(self):
 
