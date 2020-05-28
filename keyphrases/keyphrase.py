@@ -1,10 +1,9 @@
-import functools
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Blueprint, flash, redirect, render_template, request, url_for
 )
 from keyphrases.db import get_db
 from .nlp_models import PublicationKeyPhrase
-#from nlp_model import nlp_model
+
 
 bp = Blueprint('keyphrase', __name__, url_prefix='/keyphrase')
 
@@ -27,7 +26,6 @@ def input():
 
         if error is None:
             publication = PublicationKeyPhrase(text)
-            #publication = nlp_model.PublicationKeyPhrase(text)
             kp_list = publication.get_key_phrases_hmm()
             number_of_kp = len(kp_list)
             keyphrases = '\n'.join(set(kp_list))

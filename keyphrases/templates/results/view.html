@@ -7,6 +7,10 @@
 
 {% block content %}
   <form method="post">
+    <label for="body">Text</label>
+    <textarea name="body" id="body">{{ kp['text'] }}</textarea>
+  </form>
+  <form method="post">
     <label for="body">Key Phrases</label>
     <textarea name="body" id="body">{{ kp['keyphrases'] }}</textarea>
   </form>

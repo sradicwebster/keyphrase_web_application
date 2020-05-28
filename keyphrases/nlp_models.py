@@ -9,7 +9,7 @@ class PublicationKeyPhrase:
 
     def get_key_phrases_flair(self):
 
-        model = SequenceTagger.load('/Users/hn19405/OneDrive - University of Bristol/Group Project/individual_project/flair_model/final-model.pt')
+        model = SequenceTagger.load('path to model.pt')
         sentence = Sentence(self.text)
         model.predict(sentence)
         tagged = sentence.to_tagged_string().split(' ')
