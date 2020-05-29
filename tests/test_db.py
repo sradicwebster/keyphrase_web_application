@@ -1,5 +1,4 @@
 import sqlite3
-
 import pytest
 from keyphrases.db import get_db
 
