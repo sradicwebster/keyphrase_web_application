@@ -5,7 +5,7 @@ from keyphrases.db import get_db
 def test_index(client):
     response = client.get('/')
     assert b'test' in response.data
-    assert b'1 keyphrases' in response.data
+    assert b'1 keyphrase(s)' in response.data
     assert b'Upload New' in response.data
     assert b'View' in response.data
 

@@ -1,3 +1,4 @@
+# references to flair commented out
 #from flair.embeddings import Sentence
 #from flair.models import SequenceTagger
 from nltk.tokenize import TreebankWordTokenizer as twt
@@ -6,6 +7,8 @@ import dill
 class PublicationKeyPhrase:
     def __init__(self, text):
         self.text = text
+
+    # references to flair commented out
     '''
     def get_key_phrases_flair(self):
 
